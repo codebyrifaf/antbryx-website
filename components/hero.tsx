@@ -1,6 +1,12 @@
 "use client"
 
-import { motion, useMotionValue, useSpring } from "framer-motion"
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  type TargetAndTransition,
+  type Variants,
+} from "framer-motion"
 import { useEffect, useState } from "react"
 
 const techStack = [
@@ -14,7 +20,7 @@ const techStack = [
   "Figma",
 ]
 
-const wordAnimation = {
+const wordAnimation: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
@@ -28,7 +34,7 @@ const wordAnimation = {
 }
 
 // Floating blob animation variants with longer duration and crossing paths
-const blobVariants = {
+const blobVariants: Record<"blob1" | "blob2" | "blob3", TargetAndTransition> = {
   blob1: {
     x: [0, 120, -80, 60, 0],
     y: [0, -60, 80, -40, 0],
@@ -36,7 +42,7 @@ const blobVariants = {
     transition: {
       duration: 15,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: [0.42, 0, 0.58, 1],
     },
   },
   blob2: {
@@ -46,7 +52,7 @@ const blobVariants = {
     transition: {
       duration: 18,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: [0.42, 0, 0.58, 1],
     },
   },
   blob3: {
@@ -56,7 +62,7 @@ const blobVariants = {
     transition: {
       duration: 20,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: [0.42, 0, 0.58, 1],
     },
   },
 }
