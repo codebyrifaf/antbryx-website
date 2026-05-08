@@ -11,42 +11,42 @@ const pillars = [
     title: "Discovery & Analysis",
     description:
       "We deep-dive into your business goals, user needs, and market landscape to define a clear roadmap.",
-    image: "why-us/1.png",
+    image: "/why-us/1.png",
   },
   {
     number: "02",
     title: "Feasibility Assessment",
     description:
       "Our engineers evaluate technical constraints and ROI to ensure the project is viable and impactful.",
-    image: "why-us/2.png",
+    image: "/why-us/2.png",
   },
   {
     number: "03",
     title: "Architecture Design",
     description:
       "We design a scalable system structure, choosing the right stack to handle your future growth.",
-    image: "why-us/3.png",
+    image: "/why-us/3.png",
   },
   {
     number: "04",
     title: "Tech Prototyping",
     description:
       "We build rapid prototypes to validate core features and user flows before full-scale development.",
-    image: "why-us/4.png",
+    image: "/why-us/4.png",
   },
   {
     number: "05",
     title: "Agile Development",
     description:
       "Transparent, sprint-based coding with regular demos so you see progress in real-time.",
-    image: "why-us/5.png",
+    image: "/why-us/5.png",
   },
   {
     number: "06",
     title: "Deployment & Training",
     description:
       "We handle the production launch and provide hands-on training to ensure your team is set for success.",
-    image: "why-us/6.png",
+    image: "/why-us/6.png",
   },
 ]
 
