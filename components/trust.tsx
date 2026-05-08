@@ -6,7 +6,7 @@ import { Handshake, ShieldCheck, Sparkles } from "lucide-react"
 const stats = [
   {
     icon: Handshake,
-    value: "80%",
+    value: "10+",
     label: "Happy Clients",
     accent: "from-cyan-400 to-blue-500",
   },
@@ -133,14 +133,6 @@ export function Trust() {
             delivery.
           </motion.p>
 
-          <motion.blockquote
-            variants={itemVariants}
-            className="mt-8 rounded-2xl border border-white/10 bg-white/[0.035] p-6 text-lg font-semibold leading-8 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md"
-          >
-            “Trust is built when software keeps its promise. Our goal is to
-            create systems that help consumers feel confident, supported, and
-            ready for what comes next.”
-          </motion.blockquote>
         </motion.div>
       </div>
     </section>

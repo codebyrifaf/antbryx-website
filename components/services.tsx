@@ -203,22 +203,21 @@ export function Services() {
                 transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
               />
 
-              <div className="relative flex aspect-square w-[72%] max-w-[360px] flex-col items-center justify-center overflow-hidden rounded-full border border-white/20 bg-[#0b1020]/70 text-center shadow-[inset_0_1px_30px_rgba(255,255,255,0.08),0_0_90px_rgba(99,102,241,0.24)] backdrop-blur-2xl">
+              <div className="group/center relative flex aspect-square w-[72%] max-w-[360px] flex-col items-center justify-center overflow-hidden rounded-full border border-white/20 bg-[#0b1020]/70 text-center shadow-[inset_0_1px_30px_rgba(255,255,255,0.08),0_0_90px_rgba(99,102,241,0.24)] backdrop-blur-2xl">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_75%_80%,rgba(34,211,238,0.2),transparent_34%),linear-gradient(135deg,rgba(168,85,247,0.18),transparent_48%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.35),transparent_55%)] opacity-70 transition-opacity duration-500 group-hover/center:opacity-100" />
                 <motion.div
                   className="absolute inset-8 rounded-full border border-white/10"
                   animate={{ scale: [1, 1.04, 1], opacity: [0.45, 0.8, 0.45] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <div className="relative flex flex-col items-center">
-                  <div className="bg-gradient-to-br from-violet-400 via-indigo-500 to-cyan-400 bg-clip-text text-8xl font-black leading-none text-transparent sm:text-9xl">
-                    A
+                <div className="relative flex flex-col items-center gap-3">
+                  <div className="bg-gradient-to-br from-violet-300 via-indigo-400 to-cyan-300 bg-clip-text text-[3.2rem] font-semibold tracking-[-0.03em] text-transparent transition-colors duration-500 group-hover/center:from-violet-200 group-hover/center:via-indigo-300 group-hover/center:to-cyan-200 sm:text-[3.6rem]">
+                    Services
                   </div>
-                  <p className="-mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                    antbryx
-                  </p>
-                  <p className="mt-3 max-w-[210px] text-xs font-medium uppercase tracking-[0.28em] text-cyan-100/60">
-                    Connected build system
+                  <div className="h-px w-20 bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-80" />
+                  <p className="text-[0.85rem] font-semibold uppercase tracking-[0.36em] text-cyan-100/70 transition-colors duration-500 group-hover/center:text-cyan-100/90">
+                    What we build
                   </p>
                 </div>
               </div>
@@ -248,31 +247,57 @@ function ServiceCard({ service }: { service: Service }) {
   return (
     <motion.article
       variants={itemVariants}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.28, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-3xl p-px"
+      whileHover={{ y: -3, scale: 1.008 }}
+      transition={{ duration: 0.32, ease: [0.23, 1, 0.32, 1] }}
+      className="group relative overflow-hidden rounded-[28px]"
+      style={{ isolation: "isolate" }}
     >
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-35 transition-opacity duration-300 group-hover:opacity-55`}
-      />
-      <div className="absolute inset-[1px] rounded-3xl border border-white/10 bg-white/[0.06] shadow-[0_18px_50px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-2xl" />
-      <div className="absolute inset-[1px] rounded-3xl bg-[linear-gradient(135deg,rgba(255,255,255,0.2),transparent_45%),radial-gradient(circle_at_18%_20%,rgba(255,255,255,0.18),transparent_35%),radial-gradient(circle_at_85%_0%,rgba(99,102,241,0.22),transparent_55%)] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+      {/* Hover color bloom */}
+      <div className="pointer-events-none absolute inset-0 -z-10 origin-center scale-75 rounded-[28px] bg-[radial-gradient(circle_at_18%_20%,rgba(99,102,241,0.18),transparent_45%),radial-gradient(circle_at_85%_75%,rgba(168,85,247,0.16),transparent_50%)] opacity-0 transition-[opacity,transform] duration-500 ease-out group-hover:scale-100 group-hover:opacity-100" />
+      {/* Glass base */}
+      <div className="absolute inset-0 rounded-[28px] bg-white/[0.06] backdrop-blur-3xl" />
+
+      {/* Specular top-edge highlight */}
+      <div className="absolute inset-x-0 top-0 h-px rounded-t-[28px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+      <div className="absolute inset-x-4 top-0 h-[1.5px] rounded-t-full bg-gradient-to-r from-transparent via-white/20 to-transparent blur-[1px]" />
+
+      {/* Bottom line */}
+      <div className="absolute inset-x-0 bottom-0 h-px rounded-b-[28px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+
+      {/* Left depth shimmer */}
+      <div className="absolute inset-y-0 left-0 w-px rounded-l-[28px] bg-gradient-to-b from-white/20 via-white/8 to-transparent" />
+
+      {/* Outer border */}
+      <div className="pointer-events-none absolute inset-0 rounded-[28px] border border-white/[0.10] shadow-[0_8px_32px_rgba(0,0,0,0.22)]" />
 
       <div className="relative flex flex-col gap-5 p-6 sm:p-7 md:flex-row md:items-center md:gap-7">
-        <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/[0.08] text-primary shadow-[inset_0_1px_18px_rgba(255,255,255,0.16),0_6px_16px_rgba(0,0,0,0.25)] transition-all duration-300 group-hover:border-white/40 group-hover:bg-white/[0.12]">
-          <div
-            className={`absolute inset-0 rounded-full bg-gradient-to-br ${service.accent} opacity-25 blur-xl transition-opacity duration-300 group-hover:opacity-50`}
+        {/* Icon chip */}
+        <div className="relative flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-[20px]">
+          <div className="absolute inset-0 rounded-[20px] bg-white/[0.08] backdrop-blur-xl" />
+          <div className="absolute inset-x-0 top-0 h-px rounded-t-[20px] bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+          <div className="absolute inset-0 rounded-[20px] border border-white/[0.12]" />
+          <service.icon
+            className="relative h-7 w-7 text-white/80"
+            strokeWidth={1.6}
           />
-          <service.icon className="relative h-9 w-9" strokeWidth={2.2} />
         </div>
 
         <div className="min-w-0 flex-1">
-          <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+          <h3 className="text-[1.15rem] font-semibold tracking-[-0.01em] text-white/90 transition-colors duration-300 group-hover:text-white sm:text-xl">
             {service.title}
           </h3>
-          <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
+          <p className="mt-2 max-w-xl text-[1rem] leading-[1.7] text-white/85 transition-colors duration-300 group-hover:text-white sm:text-[1.02rem]">
             {service.description}
           </p>
+        </div>
+
+        {/* Chevron */}
+        <div className="hidden shrink-0 md:flex">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.10] bg-white/[0.05]">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+              <path d="M3 2L7 5L3 8" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
       </div>
     </motion.article>
