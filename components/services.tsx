@@ -11,53 +11,43 @@ import {
 
 type Service = {
   icon: LucideIcon
-  step: string
   title: string
   description: string
   accent: string
-  glow: string
   connector: string
 }
 
 const services: Service[] = [
   {
     icon: Code,
-    step: "01",
     title: "Custom Software",
     description:
       "Tailored applications designed around your business logic, not forced into templates.",
     accent: "from-violet-500 via-purple-500 to-indigo-500",
-    glow: "shadow-violet-500/25",
     connector: "url(#service-violet)",
   },
   {
     icon: ShoppingCart,
-    step: "02",
     title: "POS Systems",
     description:
       "Modern point-of-sale systems for retail — fast, reliable, and built for real-world use.",
     accent: "from-blue-500 via-indigo-500 to-cyan-400",
-    glow: "shadow-blue-500/25",
     connector: "url(#service-blue)",
   },
   {
     icon: Package,
-    step: "03",
     title: "Inventory Management",
     description:
       "Track stock, automate reordering, and sync across locations in real time.",
     accent: "from-cyan-400 via-sky-500 to-blue-500",
-    glow: "shadow-cyan-500/25",
     connector: "url(#service-cyan)",
   },
   {
     icon: Smartphone,
-    step: "04",
     title: "Web & Mobile Apps",
     description:
       "Production-ready web and mobile experiences, built to scale from day one.",
     accent: "from-indigo-400 via-violet-500 to-fuchsia-500",
-    glow: "shadow-indigo-500/25",
     connector: "url(#service-indigo)",
   },
 ]
@@ -85,17 +75,17 @@ const itemVariants: Variants = {
 }
 
 const connectorPaths = [
-  "M 370 248 C 438 248 442 116 525 116 L 612 116",
-  "M 392 328 C 456 328 456 270 525 270 L 612 270",
-  "M 392 408 C 456 408 456 424 525 424 L 612 424",
-  "M 370 488 C 438 488 448 578 535 578 L 612 578",
+  "M 352 226 C 430 226 430 116 525 116 L 612 116",
+  "M 352 312 C 430 312 438 270 525 270 L 612 270",
+  "M 352 408 C 430 408 440 424 525 424 L 612 424",
+  "M 352 444 C 430 520 442 578 535 578 L 612 578",
 ]
 
 const connectorNodes = [
-  { cx: 370, cy: 248 },
-  { cx: 392, cy: 328 },
-  { cx: 392, cy: 408 },
-  { cx: 370, cy: 488 },
+  { cx: 352, cy: 226 },
+  { cx: 352, cy: 312 },
+  { cx: 352, cy: 408 },
+  { cx: 352, cy: 444 },
 ]
 
 export function Services() {
@@ -110,40 +100,6 @@ export function Services() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-14 max-w-3xl lg:mb-12"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-primary shadow-[0_0_28px_rgba(99,102,241,0.14)]"
-          >
-            <span className="h-1.5 w-1.5 rotate-45 bg-primary shadow-[0_0_14px_rgba(129,140,248,0.9)]" />
-            Services
-          </motion.div>
-
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl"
-          >
-            What we{" "}
-            <span className="bg-gradient-to-r from-violet-400 via-indigo-400 to-cyan-300 bg-clip-text text-transparent">
-              build
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={itemVariants}
-            className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-          >
-            End-to-end software systems designed to streamline operations, scale
-            your business, and create a reliable foundation for growth.
-          </motion.p>
-        </motion.div>
-
         <div className="relative lg:min-h-[690px]">
           <svg
             className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full lg:block"
@@ -294,27 +250,18 @@ function ServiceCard({ service }: { service: Service }) {
       variants={itemVariants}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.28, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-2xl p-px"
+      className="group relative overflow-hidden rounded-3xl p-px"
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-55 transition-opacity duration-300 group-hover:opacity-95`}
+        className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-35 transition-opacity duration-300 group-hover:opacity-55`}
       />
-      <div className="absolute inset-[1px] rounded-2xl bg-[rgba(11,13,24,0.88)] backdrop-blur-xl" />
-      <div className="absolute inset-[1px] rounded-2xl bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.13),transparent_28%),radial-gradient(circle_at_100%_100%,rgba(99,102,241,0.18),transparent_38%)] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute inset-[1px] rounded-3xl border border-white/10 bg-white/[0.06] shadow-[0_18px_50px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-2xl" />
+      <div className="absolute inset-[1px] rounded-3xl bg-[linear-gradient(135deg,rgba(255,255,255,0.2),transparent_45%),radial-gradient(circle_at_18%_20%,rgba(255,255,255,0.18),transparent_35%),radial-gradient(circle_at_85%_0%,rgba(99,102,241,0.22),transparent_55%)] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <div className="relative flex flex-col gap-5 p-5 sm:p-6 md:flex-row md:items-center md:gap-7">
-        <div
-          className={`relative z-10 flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-xl border border-white/20 bg-gradient-to-br ${service.accent} text-white shadow-2xl ${service.glow}`}
-        >
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/80">
-            Step
-          </span>
-          <span className="text-3xl font-bold leading-none">{service.step}</span>
-        </div>
-
-        <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-primary shadow-[inset_0_1px_18px_rgba(255,255,255,0.08)] transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/10">
+      <div className="relative flex flex-col gap-5 p-6 sm:p-7 md:flex-row md:items-center md:gap-7">
+        <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/[0.08] text-primary shadow-[inset_0_1px_18px_rgba(255,255,255,0.16),0_6px_16px_rgba(0,0,0,0.25)] transition-all duration-300 group-hover:border-white/40 group-hover:bg-white/[0.12]">
           <div
-            className={`absolute inset-0 rounded-full bg-gradient-to-br ${service.accent} opacity-20 blur-xl transition-opacity duration-300 group-hover:opacity-45`}
+            className={`absolute inset-0 rounded-full bg-gradient-to-br ${service.accent} opacity-25 blur-xl transition-opacity duration-300 group-hover:opacity-50`}
           />
           <service.icon className="relative h-9 w-9" strokeWidth={2.2} />
         </div>
