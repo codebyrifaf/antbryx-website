@@ -14,18 +14,22 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'antbryx — Software, shipped fast',
+  title: 'AntBryx',
   description: 'Custom software, POS, and inventory systems for retail businesses and startups. Delivered in weeks, not months.',
   keywords: ['software development', 'custom software', 'POS systems', 'inventory management', 'retail software', 'startup development'],
-  authors: [{ name: 'antbryx' }],
+  authors: [{ name: 'AntBryx' }],
+  icons: {
+    icon: '/antbryx-logo.png',
+    apple: '/antbryx-logo.png',
+  },
   openGraph: {
-    title: 'antbryx — Software, shipped fast',
+    title: 'AntBryx — Software, shipped fast',
     description: 'Custom software, POS, and inventory systems for retail businesses and startups. Delivered in weeks, not months.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'antbryx — Software, shipped fast',
+    title: 'AntBryx — Software, shipped fast',
     description: 'Custom software, POS, and inventory systems for retail businesses and startups. Delivered in weeks, not months.',
   },
 }
