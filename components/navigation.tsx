@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 const navLinks = [
   { href: "#work", label: "Work" },
@@ -37,8 +38,17 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="text-xl lg:text-2xl font-bold text-foreground">
-            antbryx
+          <a href="#" className="flex flex-col items-center gap-1">
+            <Image
+              src="/antbryx-logo.png"
+              alt="Antbryx Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+            <span className="text-xs font-semibold text-foreground tracking-widest uppercase">
+              antbryx
+            </span>
           </a>
 
           {/* Desktop Navigation */}
