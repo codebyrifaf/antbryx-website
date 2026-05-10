@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero"
 import { Services } from "@/components/services"
 import { Trust } from "@/components/trust"
 import { WhyAntbryx } from "@/components/why-antbryx"
+import { PartnershipBenefits } from "@/components/partnership-benefits"
 import { CaseStudy } from "@/components/case-study"
 import { Process } from "@/components/process"
 import { Quote } from "@/components/quote"
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <Services />
       <WhyAntbryx />
+      <PartnershipBenefits />
       <CaseStudy />
       <Process />
       <Quote />
