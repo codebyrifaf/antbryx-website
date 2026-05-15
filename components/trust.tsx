@@ -8,19 +8,19 @@ const stats = [
     icon: Handshake,
     value: "10+",
     label: "Happy Clients",
-    accent: "from-cyan-400 to-blue-500",
+    accent: "text-primary",
   },
   {
     icon: ShieldCheck,
     value: "80%",
     label: "Trust Promise",
-    accent: "from-violet-400 to-indigo-500",
+    accent: "text-primary",
   },
   {
     icon: Sparkles,
     value: "3",
     label: "Years Experience",
-    accent: "from-amber-300 to-orange-500",
+    accent: "text-primary",
   },
 ]
 
@@ -48,10 +48,9 @@ const itemVariants: Variants = {
 
 export function Trust() {
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-[#05040b] py-24 lg:py-32">
+    <section className="relative overflow-hidden border-t border-border/50 bg-[#162f30] section-pad">
       <div className="pointer-events-none absolute inset-0 grid-pattern opacity-[0.04]" />
-      <div className="pointer-events-none absolute left-0 top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-indigo-500/10 blur-[130px]" />
-      <div className="pointer-events-none absolute right-[-12%] top-12 h-[500px] w-[500px] rounded-full bg-violet-500/10 blur-[120px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
         <motion.div
@@ -61,20 +60,20 @@ export function Trust() {
           transition={{ duration: 0.65, ease: "easeOut" }}
           className="relative mx-auto flex min-h-[430px] w-full max-w-[520px] items-center justify-center lg:mx-0"
         >
-          <div className="absolute inset-0 rounded-3xl border border-primary/10 bg-black/50 shadow-[0_0_90px_rgba(99,102,241,0.12)]" />
+          <div className="absolute inset-0 rounded-[10px] border border-[rgba(255,255,255,0.08)] bg-[#112118]" />
           <motion.div
-            className="absolute top-8 h-64 w-64 rounded-full border-[18px] border-transparent border-t-violet-400/80 border-r-cyan-300/75 border-b-fuchsia-500/60 blur-[1px] sm:h-72 sm:w-72"
+            className="absolute top-8 h-64 w-64 rounded-full border-[18px] border-transparent border-t-white/15 border-r-white/10 border-b-white/10 blur-[1px] sm:h-72 sm:w-72"
             animate={{ rotate: 360 }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
-            className="absolute top-16 h-48 w-48 rounded-full border-[10px] border-transparent border-l-indigo-400/75 border-b-violet-400/70 sm:h-56 sm:w-56"
+            className="absolute top-16 h-48 w-48 rounded-full border-[10px] border-transparent border-l-white/10 border-b-white/10 sm:h-56 sm:w-56"
             animate={{ rotate: -360 }}
             transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
           />
-          <div className="absolute top-14 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.22),transparent_64%)] blur-2xl" />
+          <div className="absolute top-14 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.06),transparent_64%)] blur-2xl" />
 
-          <div className="relative mt-28 w-full max-w-[430px] rounded-2xl border border-white/10 bg-[#09111f]/80 p-6 shadow-[0_0_60px_rgba(14,165,233,0.14)] backdrop-blur-xl sm:p-8">
+          <div className="relative mt-28 w-full max-w-[430px] rounded-[10px] border border-[rgba(255,255,255,0.08)] bg-[#112118] p-6 sm:p-8">
             <p className="mb-8 text-center text-xl font-semibold text-foreground sm:text-2xl">
               Our Trust Gallery
             </p>
@@ -82,11 +81,11 @@ export function Trust() {
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div
-                    className={`mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${stat.accent} text-white shadow-[0_0_26px_rgba(99,102,241,0.28)]`}
+                    className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[10px] border border-[rgba(255,255,255,0.12)] text-foreground"
                   >
                     <stat.icon className="h-6 w-6" />
                   </div>
-                  <p className="bg-gradient-to-r from-cyan-300 via-violet-300 to-orange-300 bg-clip-text text-4xl font-semibold text-transparent">
+                  <p className={`text-4xl font-semibold ${stat.accent}`}>
                     {stat.value}
                   </p>
                   <p className="mt-2 text-xs font-medium text-muted-foreground">
@@ -107,24 +106,22 @@ export function Trust() {
         >
           <motion.div
             variants={itemVariants}
-            className="mb-6 inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary shadow-[0_0_28px_rgba(99,102,241,0.14)]"
+            className="mb-6 text-[10px] font-mono font-medium uppercase tracking-[0.15em] text-muted-foreground"
           >
             Our Impact
           </motion.div>
 
           <motion.h2
             variants={itemVariants}
-            className="text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl"
+            className="text-[42px] font-bold leading-tight text-foreground sm:text-[48px] lg:text-[52px]"
           >
             Trusted by all the{" "}
-            <span className="bg-gradient-to-r from-violet-400 via-indigo-400 to-cyan-300 bg-clip-text text-transparent">
-              consumers
-            </span>
+            <span>consumers</span>
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="mt-6 text-base leading-8 text-muted-foreground sm:text-lg"
+            className="mt-6 text-[15px] leading-8 text-muted-foreground"
           >
             We build every product with a clear promise: listen carefully, ship
             responsibly, and stand beside the people who trust us with their

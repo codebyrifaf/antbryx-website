@@ -5,7 +5,7 @@ import { Trust } from "@/components/trust"
 import { WhyAntbryx } from "@/components/why-antbryx"
 import { PartnershipBenefits } from "@/components/partnership-benefits"
 import { CaseStudy } from "@/components/case-study"
-import { Process } from "@/components/process"
+import { TechnologyStack } from "@/components/technology-stack"
 import { Quote } from "@/components/quote"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
@@ -19,7 +19,7 @@ export default function Home() {
       <WhyAntbryx />
       <PartnershipBenefits />
       <CaseStudy />
-      <Process />
+      <TechnologyStack />
       <Quote />
       <Trust />
       <Contact />

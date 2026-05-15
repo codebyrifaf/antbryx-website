@@ -1,305 +1,268 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
-import {
-  Code,
-  Package,
-  ShoppingCart,
-  Smartphone,
-  type LucideIcon,
-} from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 
-type Service = {
-  icon: LucideIcon
+type ServiceIcon = "software" | "pos" | "inventory" | "apps"
+
+export type ServiceItem = {
   title: string
   description: string
-  accent: string
-  connector: string
+  icon: ServiceIcon
 }
 
-const services: Service[] = [
+type ServicesProps = {
+  items?: ServiceItem[]
+  accentClassName?: string
+  animationDelayStep?: number
+}
+
+const defaultServices: ServiceItem[] = [
   {
-    icon: Code,
     title: "Custom Software",
     description:
       "Tailored applications designed around your business logic, not forced into templates.",
-    accent: "from-violet-500 via-purple-500 to-indigo-500",
-    connector: "url(#service-violet)",
+    icon: "software",
   },
   {
-    icon: ShoppingCart,
     title: "POS Systems",
     description:
       "Modern point-of-sale systems for retail — fast, reliable, and built for real-world use.",
-    accent: "from-blue-500 via-indigo-500 to-cyan-400",
-    connector: "url(#service-blue)",
+    icon: "pos",
   },
   {
-    icon: Package,
     title: "Inventory Management",
     description:
       "Track stock, automate reordering, and sync across locations in real time.",
-    accent: "from-cyan-400 via-sky-500 to-blue-500",
-    connector: "url(#service-cyan)",
+    icon: "inventory",
   },
   {
-    icon: Smartphone,
     title: "Web & Mobile Apps",
     description:
       "Production-ready web and mobile experiences, built to scale from day one.",
-    accent: "from-indigo-400 via-violet-500 to-fuchsia-500",
-    connector: "url(#service-indigo)",
+    icon: "apps",
   },
 ]
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-}
+export function Services({
+  items = defaultServices,
+  accentClassName = "text-primary",
+  animationDelayStep = 0.12,
+}: ServicesProps) {
+  const prefersReducedMotion = useReducedMotion()
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.55,
-      ease: "easeOut",
-    },
-  },
-}
-
-const connectorPaths = [
-  "M 352 226 C 430 226 430 116 525 116 L 612 116",
-  "M 352 312 C 430 312 438 270 525 270 L 612 270",
-  "M 352 408 C 430 408 440 424 525 424 L 612 424",
-  "M 352 444 C 430 520 442 578 535 578 L 612 578",
-]
-
-const connectorNodes = [
-  { cx: 352, cy: 226 },
-  { cx: 352, cy: 312 },
-  { cx: 352, cy: 408 },
-  { cx: 352, cy: 444 },
-]
-
-export function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden border-t border-border/50 bg-background py-24 lg:py-32"
+      className="relative overflow-hidden border-t border-border/50 bg-[#162f30] py-24 lg:py-32"
     >
-      <div className="pointer-events-none absolute inset-0 grid-pattern opacity-[0.06]" />
-      <div className="pointer-events-none absolute left-[-10%] top-12 h-[620px] w-[620px] rounded-full bg-violet-500/12 blur-[130px]" />
-      <div className="pointer-events-none absolute right-[-8%] top-1/3 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[130px]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,255,255,0.04),transparent_36%),radial-gradient(circle_at_86%_20%,rgba(61,220,110,0.04),transparent_40%),linear-gradient(180deg,#162f30_0%,#122627_100%)]" />
+      <div className="pointer-events-none absolute inset-0 grid-pattern opacity-[0.035]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="relative lg:min-h-[690px]">
-          <svg
-            className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full lg:block"
-            viewBox="0 0 1180 690"
-            fill="none"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="service-violet" x1="350" x2="650" y1="130" y2="130">
-                <stop stopColor="#a855f7" />
-                <stop offset="1" stopColor="#6366f1" />
-              </linearGradient>
-              <linearGradient id="service-blue" x1="380" x2="650" y1="280" y2="280">
-                <stop stopColor="#60a5fa" />
-                <stop offset="1" stopColor="#22d3ee" />
-              </linearGradient>
-              <linearGradient id="service-cyan" x1="390" x2="650" y1="420" y2="420">
-                <stop stopColor="#22d3ee" />
-                <stop offset="1" stopColor="#38bdf8" />
-              </linearGradient>
-              <linearGradient id="service-indigo" x1="350" x2="650" y1="570" y2="570">
-                <stop stopColor="#818cf8" />
-                <stop offset="1" stopColor="#a855f7" />
-              </linearGradient>
-              <filter id="connector-glow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="4" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+        <motion.header
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mx-auto mb-10 max-w-2xl text-center sm:mb-12"
+        >
+          <p className="mb-3 font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground">
+            Services
+          </p>
+          <h2 className="text-[42px] font-bold leading-tight text-foreground sm:text-[48px] lg:text-[52px]">
+            What we offer
+          </h2>
+          <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+            Custom software, POS, inventory, and web + mobile systems built to
+            scale with your business.
+          </p>
+        </motion.header>
 
-            {connectorPaths.map((path, index) => (
-              <motion.path
-                key={path}
-                d={path}
-                stroke={services[index].connector}
-                strokeWidth="2"
-                strokeLinecap="round"
-                filter="url(#connector-glow)"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.9 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.9, delay: 0.25 + index * 0.12 }}
-              />
-            ))}
+        <div className="relative mx-auto max-w-6xl rounded-[28px] border border-white/10 bg-[#071312]/92 p-4 shadow-[0_28px_90px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl sm:p-5 lg:p-8">
+          <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-[radial-gradient(circle_at_26%_20%,rgba(255,255,255,0.045),transparent_36%),radial-gradient(circle_at_76%_36%,rgba(61,220,110,0.05),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_42%)]" />
+          <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/22 to-transparent" />
 
-            {connectorNodes.map((node, index) => (
-              <motion.g
-                key={`${node.cx}-${node.cy}`}
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.45, delay: 0.55 + index * 0.1 }}
-              >
-                <motion.circle
-                  cx={node.cx}
-                  cy={node.cy}
-                  r="13"
-                  fill={services[index].connector}
-                  opacity="0.2"
-                  animate={{ scale: [1, 1.35, 1], opacity: [0.18, 0.42, 0.18] }}
-                  transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.25 }}
-                />
-                <circle
-                  cx={node.cx}
-                  cy={node.cy}
-                  r="7"
-                  fill="#f8fafc"
-                  stroke={services[index].connector}
-                  strokeWidth="5"
-                />
-              </motion.g>
-            ))}
-          </svg>
-
-          <div className="relative z-10 grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center lg:gap-16">
-            <motion.div
-              initial={{ opacity: 0, x: -28 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.65, ease: "easeOut" }}
-              className="relative mx-auto flex min-h-[420px] w-full max-w-[520px] items-center justify-center lg:mx-0 lg:min-h-[560px]"
-            >
-              <div className="absolute h-[82%] w-[82%] rounded-full border border-indigo-500/15" />
-              <div className="absolute h-[68%] w-[68%] rounded-full border border-cyan-400/15" />
-              <motion.div
-                className="absolute h-[74%] w-[74%] rounded-full border border-transparent border-t-violet-400/80 border-r-blue-400/70 shadow-[0_0_70px_rgba(99,102,241,0.22)]"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute h-[61%] w-[61%] rounded-full border border-transparent border-b-cyan-300/75 border-l-violet-400/70"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute h-[78%] w-[78%] rounded-full bg-[conic-gradient(from_120deg,transparent,rgba(99,102,241,0.35),rgba(34,211,238,0.32),transparent)] blur-md"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-              />
-
-              <div className="group/center relative flex aspect-square w-[72%] max-w-[360px] flex-col items-center justify-center overflow-hidden rounded-full border border-white/20 bg-[#0b1020]/70 text-center shadow-[inset_0_1px_30px_rgba(255,255,255,0.08),0_0_90px_rgba(99,102,241,0.24)] backdrop-blur-2xl">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_75%_80%,rgba(34,211,238,0.2),transparent_34%),linear-gradient(135deg,rgba(168,85,247,0.18),transparent_48%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.35),transparent_55%)] opacity-70 transition-opacity duration-500 group-hover/center:opacity-100" />
-                <motion.div
-                  className="absolute inset-8 rounded-full border border-white/10"
-                  animate={{ scale: [1, 1.04, 1], opacity: [0.45, 0.8, 0.45] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <div className="relative flex flex-col items-center gap-3">
-                  <div className="bg-gradient-to-br from-violet-300 via-indigo-400 to-cyan-300 bg-clip-text text-[3.2rem] font-semibold tracking-[-0.03em] text-transparent transition-colors duration-500 group-hover/center:from-violet-200 group-hover/center:via-indigo-300 group-hover/center:to-cyan-200 sm:text-[3.6rem]">
-                    Services
-                  </div>
-                  <div className="h-px w-20 bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-80" />
-                  <p className="text-[0.85rem] font-semibold uppercase tracking-[0.36em] text-cyan-100/70 transition-colors duration-500 group-hover/center:text-cyan-100/90">
-                    What we build
-                  </p>
+          <div className="relative hidden lg:block">
+            <div className="h-[270vh]">
+              {items.map((service, index) => (
+                <div
+                  key={service.title}
+                  className="relative h-[54vh]"
+                  style={{ zIndex: index + 1 }}
+                >
+                  <motion.article
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 70, scale: 0.96 }}
+                    whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: false, margin: "-18% 0px -42% 0px" }}
+                    transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+                    className="group sticky mx-auto max-w-[860px]"
+                    style={{
+                      top: `${92 + index * 6}px`,
+                      zIndex: index + 1,
+                    }}
+                  >
+                    <ServiceCard
+                      service={service}
+                      accentClassName={accentClassName}
+                      isDimmed={index < items.length - 1}
+                    />
+                  </motion.article>
                 </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="relative grid gap-5"
-            >
-              <div className="absolute bottom-6 left-6 top-6 w-px bg-gradient-to-b from-violet-400/0 via-cyan-400/30 to-violet-400/0 lg:hidden" />
-
-              {services.map((service) => (
-                <ServiceCard key={service.title} service={service} />
               ))}
-            </motion.div>
+            </div>
+          </div>
+
+          <div className="relative flex flex-col gap-4 lg:hidden">
+            {items.map((service, index) => (
+              <motion.article
+                key={service.title}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: prefersReducedMotion ? 0 : index * animationDelayStep,
+                  ease: "easeOut",
+                }}
+                className="group relative"
+              >
+                <ServiceCard service={service} accentClassName={accentClassName} />
+              </motion.article>
+            ))}
           </div>
         </div>
+
+        <motion.div
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{
+            duration: 0.6,
+            delay: prefersReducedMotion ? 0 : items.length * animationDelayStep,
+            ease: "easeOut",
+          }}
+          className="mt-10 flex justify-center"
+        >
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/[0.045] px-6 py-3 text-sm font-medium text-white/88 transition duration-300 hover:border-white/28 hover:bg-white/[0.085] hover:text-white"
+          >
+            More about services
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </motion.div>
       </div>
     </section>
   )
 }
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceCard({
+  service,
+  accentClassName,
+  isDimmed = false,
+}: {
+  service: ServiceItem
+  accentClassName: string
+  isDimmed?: boolean
+}) {
   return (
-    <motion.article
-      variants={itemVariants}
-      whileHover={{ y: -3, scale: 1.008 }}
-      transition={{ duration: 0.32, ease: [0.23, 1, 0.32, 1] }}
-      className="group relative overflow-hidden rounded-[28px]"
-      style={{ isolation: "isolate" }}
+    <div
+      className={`relative grid min-h-[230px] gap-7 overflow-hidden rounded-[14px] border border-white/10 bg-[#162f30]/95 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] transition duration-300 group-hover:border-white/16 group-hover:shadow-[0_24px_70px_rgba(0,0,0,0.32)] sm:p-7 lg:grid-cols-[1fr_320px] lg:items-center lg:p-8 ${
+        isDimmed ? "lg:[&:not(:hover)]:opacity-90" : ""
+      }`}
     >
-      {/* Hover color bloom */}
-      <div className="pointer-events-none absolute inset-0 -z-10 origin-center scale-75 rounded-[28px] bg-[radial-gradient(circle_at_18%_20%,rgba(99,102,241,0.18),transparent_45%),radial-gradient(circle_at_85%_75%,rgba(168,85,247,0.16),transparent_50%)] opacity-0 transition-[opacity,transform] duration-500 ease-out group-hover:scale-100 group-hover:opacity-100" />
-      {/* Glass base */}
-      <div className="absolute inset-0 rounded-[28px] bg-white/[0.06] backdrop-blur-3xl" />
-
-      {/* Specular top-edge highlight */}
-      <div className="absolute inset-x-0 top-0 h-px rounded-t-[28px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
-      <div className="absolute inset-x-4 top-0 h-[1.5px] rounded-t-full bg-gradient-to-r from-transparent via-white/20 to-transparent blur-[1px]" />
-
-      {/* Bottom line */}
-      <div className="absolute inset-x-0 bottom-0 h-px rounded-b-[28px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
-
-      {/* Left depth shimmer */}
-      <div className="absolute inset-y-0 left-0 w-px rounded-l-[28px] bg-gradient-to-b from-white/20 via-white/8 to-transparent" />
-
-      {/* Outer border */}
-      <div className="pointer-events-none absolute inset-0 rounded-[28px] border border-white/[0.10] shadow-[0_8px_32px_rgba(0,0,0,0.22)]" />
-
-      <div className="relative flex flex-col gap-5 p-6 sm:p-7 md:flex-row md:items-center md:gap-7">
-        {/* Icon chip */}
-        <div className="relative flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-[20px]">
-          <div className="absolute inset-0 rounded-[20px] bg-white/[0.08] backdrop-blur-xl" />
-          <div className="absolute inset-x-0 top-0 h-px rounded-t-[20px] bg-gradient-to-r from-transparent via-white/45 to-transparent" />
-          <div className="absolute inset-0 rounded-[20px] border border-white/[0.12]" />
-          <service.icon
-            className="relative h-7 w-7 text-white/80"
-            strokeWidth={1.6}
-          />
-        </div>
-
-        <div className="min-w-0 flex-1">
-          <h3 className="text-[1.15rem] font-semibold tracking-[-0.01em] text-white/90 transition-colors duration-300 group-hover:text-white sm:text-xl">
-            {service.title}
-          </h3>
-          <p className="mt-2 max-w-xl text-[1rem] leading-[1.7] text-white/85 transition-colors duration-300 group-hover:text-white sm:text-[1.02rem]">
-            {service.description}
-          </p>
-        </div>
-
-        {/* Chevron */}
-        <div className="hidden shrink-0 md:flex">
-          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.10] bg-white/[0.05]">
-            <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
-              <path d="M3 2L7 5L3 8" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-        </div>
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,rgba(255,255,255,0.03),transparent_40%),radial-gradient(circle_at_76%_42%,rgba(61,220,110,0.04),transparent_32%)]" />
+      <div className="relative">
+        <h3 className="text-2xl font-semibold leading-tight text-white lg:text-3xl">
+          {service.title}
+        </h3>
+        <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/78 sm:text-base">
+          {service.description}
+        </p>
       </div>
-    </motion.article>
+
+      <div className="relative hidden h-64 items-center justify-center lg:flex" aria-hidden="true">
+        <ServiceIllustration icon={service.icon} accentClassName={accentClassName} />
+      </div>
+    </div>
+  )
+}
+
+function ServiceIllustration({
+  icon,
+  accentClassName,
+}: {
+  icon: ServiceIcon
+  accentClassName: string
+}) {
+  if (icon === "software") return <SoftwareSvg accentClassName={accentClassName} />
+  if (icon === "pos") return <PosSvg accentClassName={accentClassName} />
+  if (icon === "inventory") return <InventorySvg accentClassName={accentClassName} />
+  return <AppsSvg accentClassName={accentClassName} />
+}
+
+function SoftwareSvg({ accentClassName }: { accentClassName: string }) {
+  return (
+    <svg viewBox="0 0 320 256" className="h-full w-full text-white/70" fill="none" preserveAspectRatio="xMidYMid slice">
+      <rect x="34" y="42" width="252" height="156" rx="18" className="stroke-current opacity-20" />
+      <rect x="56" y="66" width="92" height="42" rx="10" className="stroke-current opacity-50" />
+      <rect x="170" y="66" width="88" height="42" rx="10" className="stroke-current opacity-28" />
+      <rect x="56" y="130" width="202" height="42" rx="10" className="stroke-current opacity-28" />
+      <path d="M96 86l-16 13 16 13M118 112l18-26M202 86l16 13-16 13" className={`${accentClassName} stroke-current`} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M148 87h22M148 98h38M80 151h62M158 151h66" className="stroke-current opacity-45" strokeWidth="3" strokeLinecap="round" />
+      <path d="M104 108v22M214 108v22" className={`${accentClassName} stroke-current opacity-80`} strokeWidth="2" strokeDasharray="4 7" />
+      <circle cx="104" cy="130" r="5" className={`${accentClassName} fill-current`} />
+      <circle cx="214" cy="130" r="5" className={`${accentClassName} fill-current opacity-75`} />
+    </svg>
+  )
+}
+
+function PosSvg({ accentClassName }: { accentClassName: string }) {
+  return (
+    <svg viewBox="0 0 320 256" className="h-full w-full text-white/70" fill="none" preserveAspectRatio="xMidYMid slice">
+      <rect x="82" y="48" width="156" height="94" rx="16" className="stroke-current opacity-34" />
+      <rect x="104" y="68" width="112" height="46" rx="8" className={`${accentClassName} stroke-current opacity-80`} />
+      <path d="M106 142l-18 48h144l-18-48" className="stroke-current opacity-42" strokeWidth="3" strokeLinejoin="round" />
+      <rect x="72" y="190" width="176" height="32" rx="10" className="stroke-current opacity-38" />
+      <path d="M108 206h52M184 206h20" className="stroke-current opacity-45" strokeWidth="3" strokeLinecap="round" />
+      <rect x="236" y="78" width="44" height="72" rx="10" className="stroke-current opacity-24" />
+      <path d="M248 98h20M248 116h20M248 134h10" className={`${accentClassName} stroke-current opacity-85`} strokeWidth="3" strokeLinecap="round" />
+      <circle cx="128" cy="92" r="5" className={`${accentClassName} fill-current`} />
+      <circle cx="146" cy="92" r="5" className={`${accentClassName} fill-current opacity-65`} />
+      <circle cx="164" cy="92" r="5" className={`${accentClassName} fill-current opacity-45`} />
+    </svg>
+  )
+}
+
+function InventorySvg({ accentClassName }: { accentClassName: string }) {
+  return (
+    <svg viewBox="0 0 320 256" className="h-full w-full text-white/70" fill="none" preserveAspectRatio="xMidYMid slice">
+      <path d="M56 84h208M56 138h208M56 192h208" className="stroke-current opacity-22" strokeWidth="4" strokeLinecap="round" />
+      <path d="M68 62v150M252 62v150" className="stroke-current opacity-26" strokeWidth="4" strokeLinecap="round" />
+      <rect x="82" y="92" width="56" height="38" rx="6" className="stroke-current opacity-45" />
+      <rect x="152" y="92" width="74" height="38" rx="6" className={`${accentClassName} stroke-current opacity-78`} />
+      <rect x="96" y="146" width="76" height="38" rx="6" className="stroke-current opacity-34" />
+      <rect x="188" y="146" width="44" height="38" rx="6" className="stroke-current opacity-45" />
+      <path d="M100 111h18M172 111h34M118 165h30M204 165h12" className="stroke-current opacity-45" strokeWidth="3" strokeLinecap="round" />
+      <path d="M236 86l16 16-16 16M84 202h42M144 202h78" className={`${accentClassName} stroke-current opacity-85`} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="252" cy="102" r="5" className={`${accentClassName} fill-current`} />
+    </svg>
+  )
+}
+
+function AppsSvg({ accentClassName }: { accentClassName: string }) {
+  return (
+    <svg viewBox="0 0 320 256" className="h-full w-full text-white/70" fill="none" preserveAspectRatio="xMidYMid slice">
+      <rect x="54" y="62" width="150" height="104" rx="14" className="stroke-current opacity-34" />
+      <path d="M54 92h150" className="stroke-current opacity-24" strokeWidth="3" />
+      <rect x="220" y="54" width="58" height="148" rx="16" className={`${accentClassName} stroke-current opacity-80`} />
+      <path d="M240 184h18M78 118h42M78 140h84M224 82h50M236 106h26M236 126h18" className="stroke-current opacity-45" strokeWidth="3" strokeLinecap="round" />
+      <path d="M156 170c20 18 50 18 70-2M188 64c20-18 44-16 58 4" className={`${accentClassName} stroke-current opacity-70`} strokeWidth="3" strokeLinecap="round" strokeDasharray="5 8" />
+      <circle cx="156" cy="170" r="5" className={`${accentClassName} fill-current`} />
+      <circle cx="226" cy="168" r="5" className={`${accentClassName} fill-current opacity-70`} />
+      <circle cx="248" cy="202" r="4" className="fill-current opacity-40" />
+    </svg>
   )
 }

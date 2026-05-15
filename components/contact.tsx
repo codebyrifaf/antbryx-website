@@ -108,7 +108,7 @@ export function Contact() {
   else if (status === "success") buttonLabel = "Sent ✓"
 
   return (
-    <section id="contact" className="py-24 lg:py-32 relative border-t border-border/50">
+    <section id="contact" className="theme-light section-pad relative border-t border-border/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.h2
@@ -116,7 +116,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6"
+            className="text-[42px] sm:text-[48px] lg:text-[52px] font-bold text-white mb-6"
           >
             {"Let's build something."}
           </motion.h2>
@@ -125,7 +125,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-muted-foreground"
+            className="text-[15px] text-muted-foreground"
           >
             {"Book a discovery call. We'll talk about your project — no sales pitch, no commitment."}
           </motion.p>
@@ -138,9 +138,7 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="max-w-xl mx-auto"
         >
-          <div className="relative p-8 lg:p-10 bg-card rounded-2xl border border-border">
-            {/* Subtle glow */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+          <div className="relative p-8 lg:p-10 bg-card rounded-[10px] border border-[rgba(0,0,0,0.08)]">
 
             <form onSubmit={handleSubmit} className="relative space-y-6">
               {/* Name */}
@@ -153,7 +151,7 @@ export function Contact() {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200"
+                  className="w-full px-4 py-3 bg-input border border-[rgba(0,0,0,0.08)] rounded-[10px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
                   placeholder="Your name"
                 />
               </div>
@@ -168,7 +166,7 @@ export function Contact() {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200"
+                  className="w-full px-4 py-3 bg-input border border-[rgba(0,0,0,0.08)] rounded-[10px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
                   placeholder="you@company.com"
                 />
               </div>
@@ -182,7 +180,7 @@ export function Contact() {
                   id="projectType"
                   value={projectType}
                   onChange={(e) => setProjectType(e.target.value)}
-                  className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-input border border-[rgba(0,0,0,0.08)] rounded-[10px] text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 appearance-none cursor-pointer"
                 >
                   <option value="" disabled>
                     Select a project type
@@ -205,7 +203,7 @@ export function Contact() {
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 bg-input border border-[rgba(0,0,0,0.08)] rounded-[10px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>
@@ -220,7 +218,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={submitDisabled}
-                className="w-full px-6 py-3 text-base font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]"
+                className="btn-base btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {buttonLabel}
               </button>

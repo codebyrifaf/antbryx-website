@@ -95,8 +95,7 @@ export function WhyAntbryx() {
   }, [isAutoPaused])
 
   return (
-    <section className="relative overflow-hidden border-t border-border/50 bg-background py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(99,102,241,0.08),transparent_45%)]" />
+    <section className="theme-light relative overflow-hidden border-t border-border/50 bg-background section-pad">
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -106,13 +105,10 @@ export function WhyAntbryx() {
           transition={springTransition}
           className="mx-auto mb-8 max-w-4xl text-center"
         >
-          <h2 className="text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/30 bg-clip-text text-transparent">
-              Why
-            </span>{" "}
-            AntBryx?
+          <h2 className="text-[42px] font-bold leading-tight text-foreground sm:text-[48px] lg:text-[52px]">
+            Why AntBryx?
           </h2>
-          <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-foreground sm:text-lg">
+          <p className="mx-auto mt-3 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
             Antbryx helps you navigate technology and build a powerful online presence for growth.
           </p>
         </motion.div>
@@ -141,13 +137,10 @@ export function WhyAntbryx() {
                 onFocus={() => setActiveIndex(index)}
                 tabIndex={0}
                 className={cn(
-                  "relative min-w-0 cursor-pointer overflow-hidden rounded-xl border border-border/60 bg-card/40 backdrop-blur-xl saturate-150 outline-none",
-                  "shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-shadow duration-300",
-                  isActive &&
-                    "shadow-[0_0_50px_-12px_rgba(99,102,241,0.35),inset_0_1px_0_rgba(255,255,255,0.12)]",
+                  "relative min-w-0 cursor-pointer overflow-hidden rounded-[10px] border border-[rgba(0,0,0,0.08)] bg-card outline-none",
                 )}
               >
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_42%),radial-gradient(circle_at_50%_100%,rgba(99,102,241,0.14),transparent_48%)]" />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_42%)]" />
 
                 <motion.div
                   animate={{ opacity: isActive ? 0 : 1 }}
@@ -155,7 +148,7 @@ export function WhyAntbryx() {
                   className="absolute inset-0 flex items-center justify-center"
                 >
                   <div className="flex h-full flex-col items-center justify-between py-7">
-                    <span className="font-mono text-5xl font-bold leading-none text-primary/45 [-webkit-text-stroke:1px_rgba(129,140,248,0.45)]">
+                    <span className="font-mono text-5xl font-bold leading-none text-muted-foreground/70 [-webkit-text-stroke:1px_rgba(90,138,106,0.35)]">
                       {pillar.number}
                     </span>
                     <div className="[writing-mode:vertical-rl] rotate-180 text-center">
@@ -207,7 +200,7 @@ export function WhyAntbryx() {
                         ...springTransition,
                         delay: isActive ? 0.16 : 0,
                       }}
-                      className="mb-4 font-mono text-4xl font-bold text-primary"
+                      className="mb-4 font-mono text-4xl font-bold text-foreground"
                     >
                       {pillar.number}
                     </motion.p>
@@ -220,7 +213,7 @@ export function WhyAntbryx() {
                         ...springTransition,
                         delay: isActive ? 0.2 : 0,
                       }}
-                      className="text-4xl font-bold leading-tight text-foreground"
+                      className="text-[24px] font-semibold leading-tight text-foreground"
                     >
                       {pillar.title}
                     </motion.h3>
@@ -233,7 +226,7 @@ export function WhyAntbryx() {
                         ...springTransition,
                         delay: isActive ? 0.24 : 0,
                       }}
-                      className="mt-5 text-lg leading-relaxed text-foreground"
+                      className="mt-5 text-[15px] leading-relaxed text-muted-foreground"
                     >
                       {pillar.description}
                     </motion.p>
@@ -260,8 +253,7 @@ export function WhyAntbryx() {
                 layout
                 variants={itemVariants}
                 className={cn(
-                  "overflow-hidden rounded-xl border border-border/60 bg-card/40 backdrop-blur-xl saturate-150",
-                  isActive && "shadow-[0_0_40px_-10px_rgba(99,102,241,0.35)]",
+                  "overflow-hidden rounded-[10px] border border-[rgba(0,0,0,0.08)] bg-card",
                 )}
               >
                 <button

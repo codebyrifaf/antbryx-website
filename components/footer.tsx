@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion"
 import { Facebook, Linkedin, Mail } from "lucide-react"
-import { useState, type ReactNode } from "react"
+import type { ReactNode } from "react"
 
 const quickLinks = [
   { href: "#work", label: "Work" },
   { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
+  { href: "#technology-stack", label: "Technology" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -18,8 +18,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      width={20}
-      height={20}
+      width={22}
+      height={22}
       className={className}
       aria-hidden
     >
@@ -40,14 +40,14 @@ const socialLinks: {
     label: "Facebook",
     ariaLabel: "Facebook — antbryx",
     external: true,
-    icon: <Facebook size={20} />,
+    icon: <Facebook size={22} />,
   },
   {
     href: "#",
     label: "LinkedIn",
     ariaLabel: "LinkedIn (coming soon)",
     external: false,
-    icon: <Linkedin size={20} />,
+    icon: <Linkedin size={22} />,
   },
   {
     href: "https://wa.me/8801875602306",
@@ -61,25 +61,21 @@ const socialLinks: {
     label: "Email",
     ariaLabel: "Email antbryx@gmail.com",
     external: false,
-    icon: <Mail size={20} />,
+    icon: <Mail size={22} />,
   },
 ]
 
 function SocialButton({
   href,
   icon,
-  label,
   ariaLabel,
   external,
 }: {
   href: string
   icon: ReactNode
-  label: string
   ariaLabel: string
   external: boolean
 }) {
-  const [isHovered, setIsHovered] = useState(false)
-
   return (
     <div className="relative">
       <a
@@ -87,57 +83,47 @@ function SocialButton({
         aria-label={ariaLabel}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="w-11 h-11 flex items-center justify-center rounded-lg bg-secondary text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200 hover:scale-105"
+        className="flex items-center justify-center footer-icon transition-colors duration-200"
       >
         {icon}
       </a>
-      {/* Tooltip */}
-      <motion.span
-        initial={{ opacity: 0, y: 4 }}
-        animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 4 }}
-        transition={{ duration: 0.15 }}
-        className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs font-medium bg-secondary text-foreground rounded pointer-events-none whitespace-nowrap"
-      >
-        {label}
-      </motion.span>
     </div>
   )
 }
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-card/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+    <footer className="border-t border-border/50 footer-bg">
+      <div className="pointer-events-none h-px w-full bg-[rgba(232,245,238,0.35)]" />
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 lg:py-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
         >
           {/* Brand */}
           <div>
-            <a href="#" className="text-xl font-bold text-foreground">
+            <a href="#" className="text-xl font-bold text-[#e8f5ee]">
               antbryx
             </a>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-1 text-sm text-[#e8f5ee]">
               Software, shipped fast.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4">
+            <h4 className="text-sm font-semibold text-[#e8f5ee] mb-3">
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    className="text-sm text-[#e8f5ee] hover:text-[#e8f5ee] transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -148,16 +134,15 @@ export function Footer() {
 
           {/* Socials */}
           <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4">
+            <h4 className="text-sm font-semibold text-[#e8f5ee] mb-3">
               Connect
             </h4>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <SocialButton
                   key={social.label}
                   href={social.href}
                   icon={social.icon}
-                  label={social.label}
                   ariaLabel={social.ariaLabel}
                   external={social.external}
                 />
@@ -167,8 +152,18 @@ export function Footer() {
         </motion.div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-border/50">
-          <p className="text-sm text-muted-foreground text-center">
+        <div className="mt-6 pt-4 border-t border-border/50">
+          <div className="footer-bottom">
+            <p className="footer-copy text-[#e8f5ee]">
+              &copy; 2026 antbryx. All rights reserved.
+            </p>
+            <div className="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of services</a>
+              <a href="#">Cookie settings</a>
+            </div>
+          </div>
+          <p className="sr-only">
             &copy; 2026 antbryx. All rights reserved.
           </p>
         </div>

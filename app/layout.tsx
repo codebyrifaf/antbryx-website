@@ -1,16 +1,24 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { DM_Sans, JetBrains_Mono, Syne } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const geistSans = Geist({
+const bodyFont = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
+  variable: '--font-body',
+  weight: ['400', '500', '600'],
 })
 
-const geistMono = Geist_Mono({
+const headingFont = Syne({
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-heading',
+  weight: ['600', '700'],
+})
+
+const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500', '600'],
 })
 
 export const metadata: Metadata = {
@@ -35,7 +43,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport = {
-  themeColor: '#0a0a0a',
+  themeColor: '#162f30',
 }
 
 export default function RootLayout({
@@ -44,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-[#0a0a0a]`}>
+    <html lang="en" className={`${bodyFont.variable} ${headingFont.variable} ${monoFont.variable} bg-[#162f30]`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

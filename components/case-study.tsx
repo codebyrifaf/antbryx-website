@@ -78,12 +78,10 @@ export function CaseStudy() {
   return (
     <section
       id="work"
-      className="relative overflow-hidden border-t border-border/50 bg-background py-24 lg:py-32"
+      className="relative overflow-hidden border-t border-border/50 bg-background section-pad"
     >
       <div className="pointer-events-none absolute inset-0 grid-pattern opacity-[0.055]" />
-      <div className="pointer-events-none absolute left-[-12%] top-20 h-[560px] w-[560px] rounded-full bg-primary/12 blur-[130px]" />
-      <div className="pointer-events-none absolute right-[-10%] bottom-12 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[130px]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -93,16 +91,13 @@ export function CaseStudy() {
           transition={{ duration: 0.5 }}
           className="mb-10 max-w-3xl"
         >
-          <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+          <p className="mb-4 text-[10px] font-mono font-medium uppercase tracking-[0.15em] text-muted-foreground">
             Featured work
           </p>
-          <h2 className="text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-            Featured{" "}
-            <span className="bg-gradient-to-r from-primary via-violet-400 to-cyan-300 bg-clip-text text-transparent">
-              Case Study
-            </span>
+          <h2 className="text-[42px] font-bold leading-tight text-foreground sm:text-[48px] lg:text-[52px]">
+            Featured Case Study
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/78 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
             A complete retail platform designed as one connected operating system, from storefront to admin, checkout, and assistant moderation.
           </p>
         </motion.div>
@@ -112,113 +107,117 @@ export function CaseStudy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-[28px] border border-border/60 bg-card/40 p-1 shadow-[0_0_70px_rgba(99,102,241,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl saturate-150"
+          className="relative overflow-hidden rounded-[10px] border border-white/12 bg-white/5 p-1 shadow-[0_16px_50px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-lg"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(99,102,241,0.20),transparent_30%),radial-gradient(circle_at_84%_24%,rgba(34,211,238,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.055),transparent_42%)]" />
-          <div className="relative overflow-hidden rounded-[24px] bg-[#080808]/82 px-5 py-7 sm:px-7 sm:py-8 lg:px-10 lg:py-10">
-            <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+          <div className="relative overflow-hidden rounded-[8px] bg-white/[0.035] px-5 py-7 sm:px-7 sm:py-8 lg:px-10 lg:py-10">
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_55%)] opacity-80" />
 
-            <div className="mb-9 grid gap-8 lg:grid-cols-[1fr_420px] lg:items-start">
-              <div>
-                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-medium text-primary-foreground shadow-[0_0_26px_rgba(99,102,241,0.12)]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]" />
-                  ITLab retail ecosystem
+            <div className="relative z-10">
+              <div className="mb-9 grid gap-8 lg:grid-cols-[1fr_420px] lg:items-start">
+                <div>
+                  <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.12)] px-3 py-1 text-[10px] font-medium text-muted-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
+                    ITLab retail ecosystem
+                  </div>
+                  <h3 className="max-w-3xl text-2xl font-bold leading-tight text-foreground sm:text-3xl lg:text-4xl">
+                    Retail Platform — Full Stack Build
+                  </h3>
+                  <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+                    A complete role-based retail platform built end-to-end for ITLab — product catalog, admin control center, POS terminal, and assistant moderation portal — all connected, all shipped in under 6 weeks.
+                  </p>
                 </div>
-                <h3 className="max-w-3xl text-2xl font-bold leading-tight text-foreground sm:text-3xl lg:text-4xl">
-                  Retail Platform — Full Stack Build
-                </h3>
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/76 sm:text-base">
-                  A complete role-based retail platform built end-to-end for ITLab — product catalog, admin control center, POS terminal, and assistant moderation portal — all connected, all shipped in under 6 weeks.
-                </p>
-              </div>
 
-              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                {metrics.map((metric) => {
-                  const Icon = metric.icon
+                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                  {metrics.map((metric) => {
+                    const Icon = metric.icon
 
-                  return (
-                    <div
-                      key={metric.label}
-                      className="flex items-center gap-4 rounded-xl border border-border/60 bg-background/55 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
-                    >
-                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-primary/25 bg-primary/12 text-cyan-200">
-                        <Icon className="h-5 w-5" />
+                    return (
+                      <div
+                        key={metric.label}
+                        className="flex items-center gap-4 rounded-[10px] border border-white/12 bg-white/5 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-lg"
+                      >
+                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border border-white/12 bg-white/6 text-foreground">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <p className="text-2xl font-bold leading-none text-primary">
+                            {metric.value}
+                          </p>
+                          <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground">
+                            {metric.label}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-2xl font-bold leading-none text-foreground">
-                          {metric.value}
-                        </p>
-                        <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-foreground/50">
-                          {metric.label}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5"
-            >
-              {panels.map((panel) => (
-                <motion.div
-                  key={panel.label}
-                  variants={itemVariants}
-                  className={`group relative overflow-hidden rounded-2xl border border-border/60 bg-background/60 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/55 hover:shadow-[0_20px_70px_rgba(99,102,241,0.14)] ${panel.className}`}
-                >
-                  <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0f0f0f]">
-                    <Image
-                      src={panel.src}
-                      alt={panel.alt}
-                      width={1600}
-                      height={1000}
-                      priority={panel.priority}
-                      loading={panel.priority ? undefined : "lazy"}
-                      className="aspect-[1.9/1] w-full object-cover object-top transition duration-500 group-hover:scale-[1.025]"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/42 via-transparent to-white/[0.03]" />
-                  </div>
-                  <div className="flex items-start justify-between gap-4 px-1 pb-1 pt-4">
-                    <div>
-                      <h4 className="text-base font-semibold text-foreground">
-                        {panel.label}
-                      </h4>
-                      <p className="mt-1 max-w-xl text-sm leading-relaxed text-foreground/58">
-                        {panel.detail}
-                      </p>
-                    </div>
-                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-foreground/70 transition-colors duration-300 group-hover:border-primary/40 group-hover:text-cyan-200">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <div className="mt-8 grid gap-5 border-t border-border/50 pt-7 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {outcomes.map((outcome) => (
-                  <div key={outcome} className="flex items-center gap-3 text-sm text-foreground/78">
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-cyan-300" />
-                    {outcome}
-                  </div>
-                ))}
+                    )
+                  })}
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 lg:max-w-[380px] lg:justify-end">
-                {["Catalog", "Admin", "POS", "Assistant", "Role-Based", "6 weeks"].map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-border/60 bg-secondary/80 px-3 py-1 text-xs font-medium text-secondary-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5"
+              >
+                {panels.map((panel) => (
+                  <motion.div
+                    key={panel.label}
+                    variants={itemVariants}
+                    className={`group relative overflow-hidden rounded-[10px] border border-white/12 bg-white/5 p-3 shadow-[0_12px_40px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-lg transition-all duration-300 ease-out hover:-translate-y-1 ${panel.className}`}
                   >
-                    {tag}
-                  </span>
+                    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_55%)] opacity-70" />
+                    <div className="relative z-10">
+                      <div className="relative overflow-hidden rounded-[10px] border border-white/10 bg-[#162f30]">
+                        <Image
+                          src={panel.src}
+                          alt={panel.alt}
+                          width={1600}
+                          height={1000}
+                          priority={panel.priority}
+                          loading={panel.priority ? undefined : "lazy"}
+                          className="aspect-[1.9/1] w-full object-cover object-top transition duration-500 group-hover:scale-[1.025]"
+                        />
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/42 via-transparent to-white/[0.03]" />
+                      </div>
+                      <div className="flex items-start justify-between gap-4 px-1 pb-1 pt-4">
+                        <div>
+                          <h4 className="text-base font-semibold text-foreground">
+                            {panel.label}
+                          </h4>
+                          <p className="mt-1 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+                            {panel.detail}
+                          </p>
+                        </div>
+                        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-foreground/70 transition-colors duration-300">
+                          <ArrowUpRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 ))}
+              </motion.div>
+
+              <div className="mt-8 grid gap-5 border-t border-border/50 pt-7 lg:grid-cols-[1fr_auto] lg:items-center">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {outcomes.map((outcome) => (
+                    <div key={outcome} className="flex items-center gap-3 text-[15px] text-muted-foreground">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
+                      {outcome}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 lg:max-w-[380px] lg:justify-end">
+                  {["Catalog", "Admin", "POS", "Assistant", "Role-Based", "6 weeks"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-[rgba(255,255,255,0.08)] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

@@ -1,13 +1,6 @@
 "use client"
 
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  type TargetAndTransition,
-  type Variants,
-} from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion, type TargetAndTransition, type Variants } from "framer-motion"
 
 const techStack = [
   "Next.js",
@@ -33,32 +26,51 @@ const wordAnimation: Variants = {
   }),
 }
 
-// Floating blob animation variants with longer duration and crossing paths
-const blobVariants: Record<"blob1" | "blob2" | "blob3", TargetAndTransition> = {
-  blob1: {
-    x: [0, 120, -80, 60, 0],
-    y: [0, -60, 80, -40, 0],
-    scale: [1, 1.1, 0.95, 1.05, 1],
-    transition: {
-      duration: 15,
-      repeat: Infinity,
-      ease: [0.42, 0, 0.58, 1],
-    },
-  },
-  blob2: {
-    x: [0, -100, 60, -40, 0],
-    y: [0, 80, -60, 30, 0],
-    scale: [1, 0.95, 1.1, 1, 1],
+const bubbleVariants: Record<"bubble1" | "bubble2" | "bubble3" | "bubble4" | "bubble5", TargetAndTransition> = {
+  bubble1: {
+    x: [0, 34, -18, 0],
+    y: [0, -24, 18, 0],
+    rotate: [-8, -3, -12, -8],
     transition: {
       duration: 18,
       repeat: Infinity,
       ease: [0.42, 0, 0.58, 1],
     },
   },
-  blob3: {
-    x: [0, 60, -120, 80, 0],
-    y: [0, -40, -20, 60, 0],
-    scale: [1, 1.05, 1, 0.95, 1],
+  bubble2: {
+    x: [0, -28, 16, 0],
+    y: [0, 20, -26, 0],
+    rotate: [11, 7, 14, 11],
+    transition: {
+      duration: 22,
+      repeat: Infinity,
+      ease: [0.42, 0, 0.58, 1],
+    },
+  },
+  bubble3: {
+    x: [0, 22, -24, 0],
+    y: [0, -18, 24, 0],
+    rotate: [-18, -13, -21, -18],
+    transition: {
+      duration: 24,
+      repeat: Infinity,
+      ease: [0.42, 0, 0.58, 1],
+    },
+  },
+  bubble4: {
+    x: [0, -18, 24, 0],
+    y: [0, 28, -12, 0],
+    rotate: [18, 24, 15, 18],
+    transition: {
+      duration: 26,
+      repeat: Infinity,
+      ease: [0.42, 0, 0.58, 1],
+    },
+  },
+  bubble5: {
+    x: [0, 16, -12, 0],
+    y: [0, -22, 16, 0],
+    rotate: [-6, -10, -2, -6],
     transition: {
       duration: 20,
       repeat: Infinity,
@@ -68,29 +80,6 @@ const blobVariants: Record<"blob1" | "blob2" | "blob3", TargetAndTransition> = {
 }
 
 export function Hero() {
-  const [mounted, setMounted] = useState(false)
-  
-  // Mouse position with spring physics for smooth following
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  
-  // Smoother, more responsive spring config
-  const springConfig = { damping: 20, stiffness: 100, mass: 0.5 }
-  const smoothMouseX = useSpring(mouseX, springConfig)
-  const smoothMouseY = useSpring(mouseY, springConfig)
-
-  useEffect(() => {
-    setMounted(true)
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX)
-      mouseY.set(e.clientY)
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [mouseX, mouseY])
-
   const headlineWords = [
     { text: "We", gradient: false },
     { text: "ship", gradient: true },
@@ -110,55 +99,45 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Base background */}
-      <div className="absolute inset-0 bg-[#0a0a0a]" />
-      
-      {/* Animated gradient blobs - larger, more visible, crossing paths */}
-      <motion.div
-        animate={blobVariants.blob1}
-        className="absolute top-1/4 -left-32 w-[700px] h-[700px] rounded-full"
-        style={{ 
-          background: "radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0.2) 40%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-      <motion.div
-        animate={blobVariants.blob2}
-        className="absolute top-1/3 -right-20 w-[800px] h-[800px] rounded-full"
-        style={{ 
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.55) 0%, rgba(59, 130, 246, 0.25) 40%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-      <motion.div
-        animate={blobVariants.blob3}
-        className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] rounded-full"
-        style={{ 
-          background: "radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(168, 85, 247, 0.15) 40%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_32%,rgba(255,255,255,0.06),transparent_55%),radial-gradient(circle_at_62%_62%,rgba(61,220,110,0.08),transparent_50%),linear-gradient(180deg,#162f30_0%,#162f30_100%)]" />
 
-      {/* Mouse-follow glow - larger and more visible */}
-      {mounted && (
-        <motion.div
-          className="pointer-events-none fixed z-10"
-          style={{
-            width: 500,
-            height: 500,
-            background: "radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(99, 102, 241, 0.15) 30%, transparent 60%)",
-            filter: "blur(60px)",
-            x: smoothMouseX,
-            y: smoothMouseY,
-            translateX: "-50%",
-            translateY: "-50%",
-          }}
-        />
-      )}
+      {/* Soft translucent background shapes */}
+      <motion.div
+        animate={bubbleVariants.bubble1}
+        className="absolute left-[4%] top-[48%] h-[360px] w-[520px] rounded-[50%] border border-white/10 bg-[radial-gradient(circle_at_36%_20%,rgba(255,255,255,0.18),transparent_20%),linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.025)_52%,rgba(61,220,110,0.08))] opacity-70 shadow-[inset_18px_22px_56px_rgba(255,255,255,0.07),inset_-28px_-32px_64px_rgba(0,0,0,0.16),0_0_42px_rgba(255,255,255,0.06)] blur-[0.3px]"
+      />
+      <motion.div
+        animate={bubbleVariants.bubble2}
+        className="absolute right-[6%] top-[10%] h-[420px] w-[320px] rounded-[50%] border border-white/10 bg-[radial-gradient(circle_at_38%_16%,rgba(255,255,255,0.2),transparent_22%),linear-gradient(160deg,rgba(255,255,255,0.13),rgba(255,255,255,0.035)_54%,rgba(61,220,110,0.07))] opacity-75 shadow-[inset_18px_24px_60px_rgba(255,255,255,0.08),inset_-26px_-34px_70px_rgba(0,0,0,0.18),0_0_46px_rgba(255,255,255,0.06)] blur-[0.3px]"
+      />
+      <motion.div
+        animate={bubbleVariants.bubble3}
+        className="absolute left-[42%] top-[26%] h-[260px] w-[350px] rounded-[50%] border border-white/10 bg-[radial-gradient(circle_at_35%_18%,rgba(255,255,255,0.18),transparent_21%),linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03)_55%,rgba(61,220,110,0.08))] opacity-65 shadow-[inset_16px_22px_52px_rgba(255,255,255,0.07),inset_-24px_-30px_58px_rgba(0,0,0,0.16)] blur-[0.3px]"
+      />
+      <motion.div
+        animate={bubbleVariants.bubble4}
+        className="absolute bottom-[12%] left-[38%] h-[300px] w-[215px] rounded-[50%] border border-white/10 bg-[radial-gradient(circle_at_38%_16%,rgba(255,255,255,0.16),transparent_22%),linear-gradient(155deg,rgba(255,255,255,0.1),rgba(255,255,255,0.025)_56%,rgba(61,220,110,0.07))] opacity-58 shadow-[inset_14px_20px_48px_rgba(255,255,255,0.06),inset_-20px_-28px_56px_rgba(0,0,0,0.18)] blur-[0.3px]"
+      />
+      <motion.div
+        animate={bubbleVariants.bubble5}
+        className="absolute bottom-[18%] right-[18%] h-[420px] w-[390px] rounded-[50%] border border-white/10 bg-[radial-gradient(circle_at_36%_16%,rgba(255,255,255,0.15),transparent_22%),linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.025)_54%,rgba(61,220,110,0.08))] opacity-56 shadow-[inset_18px_24px_58px_rgba(255,255,255,0.06),inset_-26px_-34px_72px_rgba(0,0,0,0.17)] blur-[0.3px]"
+      />
 
       {/* Grid overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.045]" />
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-12">
+        <div
+          className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 grid-cols-3 gap-2 xl:grid"
+          aria-hidden="true"
+        >
+          {Array.from({ length: 8 }).map((_, index) => (
+            <span
+              key={index}
+              className="h-3 w-3 rounded-full bg-primary shadow-[0_0_18px_rgba(125,255,138,0.5)]"
+            />
+          ))}
+        </div>
         <div className="max-w-5xl">
           {/* Headline Line 1 */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-none">
@@ -170,7 +149,7 @@ export function Hero() {
                   initial="hidden"
                   animate="visible"
                   variants={wordAnimation}
-                  className={word.gradient ? "gradient-text" : "text-foreground"}
+                  className="text-foreground"
                 >
                   {word.text}
                 </motion.span>
@@ -187,7 +166,7 @@ export function Hero() {
                 initial="hidden"
                 animate="visible"
                 variants={wordAnimation}
-                className="gradient-text"
+                className="text-foreground"
               >
                 {word.text}
               </motion.span>
@@ -217,7 +196,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-8 text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl"
+            className="mt-8 text-[15px] text-muted-foreground max-w-2xl"
           >
             Custom software, POS, and inventory systems — delivered in weeks, not months.
           </motion.p>
@@ -231,13 +210,13 @@ export function Hero() {
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-primary text-primary-foreground rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:bg-primary/90"
+              className="btn-base btn-primary"
             >
               Book a Discovery Call
             </a>
             <a
               href="#work"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium border border-border text-foreground rounded-lg hover:bg-secondary transition-colors duration-200"
+              className="btn-base btn-ghost"
             >
               See our work
             </a>
@@ -250,7 +229,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}
-        className="relative z-10 w-full shrink-0 border-t border-border/50 bg-[#0a0a0a]/50 backdrop-blur-sm"
+        className="relative z-10 w-full shrink-0 border-t border-border/50 bg-[#112118]/65 backdrop-blur-sm"
       >
         <div className="overflow-hidden py-4">
           <div className="flex animate-marquee">
