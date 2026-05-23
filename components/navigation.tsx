@@ -42,9 +42,10 @@ export function Navigation() {
             <Image
               src="/antbryx-logo.png"
               alt="Antbryx Logo"
-              width={40}
-              height={40}
-              className="w-10 h-auto object-contain"
+              width={1554}
+              height={1446}
+              className="object-contain"
+              style={{ width: 40, height: "auto" }}
             />
             <span className="text-xs font-semibold text-foreground tracking-widest uppercase">
               antbryx

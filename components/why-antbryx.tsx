@@ -185,9 +185,9 @@ export function WhyAntbryx() {
                       alt={`${pillar.title} process preview`}
                       fill
                       sizes="540px"
-                      className="object-cover opacity-85"
+                      className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/60 to-background/90" />
+                    <div className="absolute inset-0 bg-black/55" />
                   </motion.div>
 
                   <div className="relative z-10 max-w-md">
@@ -200,7 +200,7 @@ export function WhyAntbryx() {
                         ...springTransition,
                         delay: isActive ? 0.16 : 0,
                       }}
-                      className="mb-4 font-mono text-4xl font-bold text-foreground"
+                      className="mb-4 font-mono text-5xl font-bold text-white"
                     >
                       {pillar.number}
                     </motion.p>
@@ -213,7 +213,7 @@ export function WhyAntbryx() {
                         ...springTransition,
                         delay: isActive ? 0.2 : 0,
                       }}
-                      className="text-[24px] font-semibold leading-tight text-foreground"
+                      className="text-[32px] font-semibold leading-tight text-white"
                     >
                       {pillar.title}
                     </motion.h3>
@@ -226,7 +226,7 @@ export function WhyAntbryx() {
                         ...springTransition,
                         delay: isActive ? 0.24 : 0,
                       }}
-                      className="mt-5 text-[15px] leading-relaxed text-muted-foreground"
+                      className="mt-5 text-[18px] leading-relaxed text-white/85"
                     >
                       {pillar.description}
                     </motion.p>
@@ -293,9 +293,9 @@ export function WhyAntbryx() {
                         alt={`${pillar.title} process preview`}
                         fill
                         sizes="(max-width: 1024px) 100vw, 540px"
-                        className="object-cover opacity-85"
+                        className="object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/60 to-background/90" />
+                      <div className="absolute inset-0 bg-black/55" />
                     </div>
                     <p className="relative z-10 text-base leading-relaxed text-foreground">
                       {pillar.description}

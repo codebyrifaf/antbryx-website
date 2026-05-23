@@ -84,37 +84,7 @@ export function Services({
           <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-[radial-gradient(circle_at_26%_20%,rgba(255,255,255,0.045),transparent_36%),radial-gradient(circle_at_76%_36%,rgba(61,220,110,0.05),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_42%)]" />
           <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/22 to-transparent" />
 
-          <div className="relative hidden lg:block">
-            <div className="h-[270vh]">
-              {items.map((service, index) => (
-                <div
-                  key={service.title}
-                  className="relative h-[54vh]"
-                  style={{ zIndex: index + 1 }}
-                >
-                  <motion.article
-                    initial={prefersReducedMotion ? false : { opacity: 0, y: 70, scale: 0.96 }}
-                    whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: false, margin: "-18% 0px -42% 0px" }}
-                    transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-                    className="group sticky mx-auto max-w-[860px]"
-                    style={{
-                      top: `${92 + index * 6}px`,
-                      zIndex: index + 1,
-                    }}
-                  >
-                    <ServiceCard
-                      service={service}
-                      accentClassName={accentClassName}
-                      isDimmed={index < items.length - 1}
-                    />
-                  </motion.article>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative flex flex-col gap-4 lg:hidden">
+          <div className="relative flex flex-col gap-4">
             {items.map((service, index) => (
               <motion.article
                 key={service.title}
@@ -169,11 +139,10 @@ function ServiceCard({
 }) {
   return (
     <div
-      className={`relative grid min-h-[230px] gap-7 overflow-hidden rounded-[14px] border border-white/10 bg-[#162f30]/95 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] transition duration-300 group-hover:border-white/16 group-hover:shadow-[0_24px_70px_rgba(0,0,0,0.32)] sm:p-7 lg:grid-cols-[1fr_320px] lg:items-center lg:p-8 ${
+      className={`relative grid min-h-[200px] gap-7 overflow-hidden rounded-[14px] border border-white/10 bg-[#162f30]/95 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] transition duration-300 group-hover:border-white/16 group-hover:shadow-[0_24px_70px_rgba(0,0,0,0.32)] sm:p-7 lg:grid-cols-[1fr_320px] lg:items-center lg:p-8 ${
         isDimmed ? "lg:[&:not(:hover)]:opacity-90" : ""
       }`}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,rgba(255,255,255,0.03),transparent_40%),radial-gradient(circle_at_76%_42%,rgba(61,220,110,0.04),transparent_32%)]" />
       <div className="relative">
         <h3 className="text-2xl font-semibold leading-tight text-white lg:text-3xl">
           {service.title}
@@ -183,7 +152,7 @@ function ServiceCard({
         </p>
       </div>
 
-      <div className="relative hidden h-64 items-center justify-center lg:flex" aria-hidden="true">
+      <div className="relative hidden h-50 items-center justify-center lg:flex" aria-hidden="true">
         <ServiceIllustration icon={service.icon} accentClassName={accentClassName} />
       </div>
     </div>
