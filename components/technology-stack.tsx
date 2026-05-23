@@ -105,9 +105,6 @@ export function TechnologyStack() {
                 <p className="text-[15px] font-semibold text-foreground">
                   {activeFilter === "All" ? "Complete stack" : activeFilter}
                 </p>
-                <p className="mt-1 text-[15px] text-muted-foreground">
-                  {visibleTechnologies.length} technologies
-                </p>
               </div>
 
               <div className="flex flex-wrap gap-2">
@@ -174,9 +171,6 @@ function TechTile({
         )}
       </div>
       <h3 className="text-sm font-semibold leading-tight text-foreground">{name}</h3>
-      <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.12em] leading-tight text-foreground/45">
-        {category}
-      </p>
     </motion.div>
   )
 }

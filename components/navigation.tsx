@@ -58,7 +58,7 @@ export function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="relative text-base font-semibold tracking-wide text-foreground/80 transition-colors duration-200 hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.label}
               </a>
@@ -95,7 +95,7 @@ export function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  className="text-base font-medium tracking-wide text-foreground/80 transition-colors duration-200 hover:text-foreground"
                 >
                   {link.label}
                 </a>

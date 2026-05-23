@@ -20,8 +20,8 @@ export default function Home() {
       <PartnershipBenefits />
       <CaseStudy />
       <TechnologyStack />
-      <Quote />
       <Trust />
+      <Quote />
       <Contact />
       <Footer />
     </main>
